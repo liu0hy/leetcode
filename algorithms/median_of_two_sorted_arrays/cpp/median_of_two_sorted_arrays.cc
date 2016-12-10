@@ -4,7 +4,7 @@ class Solution {
   double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
     if (nums1.empty() && nums2.empty()) return 0;
     if (nums1.size() > nums2.size()) swap(nums1, nums2);
-    size_t half_len = (nums1.size() + nums2.size() + 1) / 2;
+    const size_t half_len = (nums1.size() + nums2.size() + 1) / 2;
     size_t low = 0;
     size_t high = nums1.size();
     size_t i, j;
