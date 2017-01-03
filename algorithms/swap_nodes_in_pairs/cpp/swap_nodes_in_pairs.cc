@@ -8,24 +8,17 @@
  * };
  */
 class Solution {
- public:
-  ListNode* swapPairs(ListNode* head) {
-    ListNode* cur;
-    ListNode* next;
-    ListNode flag{0};
-    flag.next = head;
-    ListNode* newCur{head};
-    ListNode* oldNext{&flag};
-
-    while (newCur && newCur->next) {
-      cur = newCur;
-      next = cur->next;
-      newCur = next->next;
-      next->next = cur;
-      cur->next = newCur;
-      oldNext->next = next;
-      oldNext = cur;
+public:
+    ListNode* swapPairs(ListNode* head) {
+        ListNode** prev{&head};
+        ListNode* cur;
+        ListNode* next;
+        while ((cur=*prev) && (next=cur->next)) {
+            cur->next = next->next;
+            next->next = cur;
+            *prev = next;
+            prev = &(cur->next);
+        }
+        return head;
     }
-    return flag.next;
-  }
 };
